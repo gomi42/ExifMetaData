@@ -1,0 +1,141 @@
+﻿<Window x:Class="IfcGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:IfcGenerator"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Exif Code Generator"
+        Width="689"
+        Height="372"
+        Background="#FFF3F3F3"
+        mc:Ignorable="d">
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style x:Key="ItemBorderStyle"
+               TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="BorderBrush" Value="#FFd8d8d8" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="20,10,20,10" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Margin" Value="0,15,0,0" />
+            <Setter Property="Width" Value="290" />
+            <Setter Property="Height" Value="52" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <Grid Margin="20,30,20,0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                    <Border Margin="0"
+                            Style="{StaticResource ItemBorderStyle}">
+                        <DockPanel VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Content="Tag Enum" />
+                            <Button Width="80"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Click="ButtonGenTagEnums"
+                                    Content="Generate" />
+                        </DockPanel>
+                    </Border>
+                    <Border Style="{StaticResource ItemBorderStyle}">
+                        <DockPanel VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Content="TagId Enum" />
+                            <Button Width="80"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Click="ButtonGenTagIdEnums"
+                                    Content="Generate" />
+                        </DockPanel>
+                    </Border>
+                    <Border Style="{StaticResource ItemBorderStyle}">
+                        <DockPanel VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Content="TagDetailsRegistry" />
+                            <Button Width="80"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Click="ButtonGenTagDetailsRegistry"
+                                    Content="Generate" />
+                        </DockPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                    <Border Margin="0"
+                            Style="{StaticResource ItemBorderStyle}">
+                        <DockPanel VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Content="NameExtensions" />
+                            <Button Width="80"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Click="ButtonGenNameExtensionsUser"
+                                    Content="Generate" />
+                        </DockPanel>
+                    </Border>
+                    <Border Style="{StaticResource ItemBorderStyle}">
+                        <DockPanel VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Content="IfdProperties" />
+                            <Button Width="80"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Click="ButtonGenIfdFunctions"
+                                    Content="Generate" />
+                        </DockPanel>
+                    </Border>
+                    <Border Style="{StaticResource ItemBorderStyle}">
+                        <DockPanel VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Content="Enum Classes" />
+                            <Button Width="80"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Click="ButtonGenEnumClasses"
+                                    Content="Generate" />
+                        </DockPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <Border Margin="0,40,0,0"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource ItemBorderStyle}">
+                <Button Width="150"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="ButtonGenAll"
+                        Content="Generate All"
+                        FontSize="16" />
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

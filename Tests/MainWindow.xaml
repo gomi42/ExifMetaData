@@ -1,0 +1,81 @@
+﻿<Window x:Class="Tests.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Tests"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Exif Test"
+        Width="635"
+        Height="450"
+        mc:Ignorable="d">
+    <Grid>
+        <TextBlock Margin="20,13,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="14"
+                   Text="Filename:"
+                   TextWrapping="Wrap" />
+        <TextBlock x:Name="Filename"
+                   Margin="82,13,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="14"
+                   Text=""
+                   TextWrapping="Wrap" />
+        <UniformGrid HorizontalAlignment="Left" Width="100" Margin="20,60,0,0" Columns="1" Height="256" VerticalAlignment="Top">
+            <Button Width="85"
+                Height="29"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="Button_CopyFile"
+                Content="Copy" />
+            <Button Width="85"
+                Height="29"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="Button_Click_CopyTiff"
+                Content="Copy TIFF" />
+            <Button Width="85"
+                Height="29"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="Button_Click_CopyUser"
+                Content="Copy User" />
+            <Button Width="85"
+                Height="29"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="Button_MiscTest"
+                Content="Misc. Test" />
+            <Button Width="85"
+                Height="29"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="Button_ShowExif"
+                Content="Show" />
+        </UniformGrid>
+        <DataGrid x:Name="ExifGrid"
+                  Margin="156,60,19,16"
+                  AlternatingRowBackground="#FFf5f5f5"
+                  AutoGenerateColumns="False"
+                  Background="{x:Null}"
+                  GridLinesVisibility="Vertical"
+                  HeadersVisibility="Column"
+                  IsReadOnly="True"
+                  RowHeight="23"
+                  VerticalGridLinesBrush="#ffe0e0e0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Property}"
+                                    Header="Name" />
+                <DataGridTextColumn Width="*"
+                                    Binding="{Binding Value}"
+                                    Header="Value" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

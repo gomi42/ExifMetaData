@@ -1,0 +1,260 @@
+[
+  {
+    "Class": "Ascii",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "StringUtf8",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "StringXp",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "FourChar",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "MulticodeUnicode",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "MulticodeAscii",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "MulticodeString",
+    "Function": "String",
+    "Type": "string",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "Byte",
+    "Type": "byte",
+    "Plural": "true"
+  },
+  {
+    "Class": "SByte",
+    "Type": "sbyte",
+    "Plural": "true"
+  },
+  {
+    "Class": "UShort",
+    "Type": "ushort",
+    "Plural": "true"
+  },
+  {
+    "Class": "SShort",
+    "Type": "short",
+    "Plural": "true"
+  },
+  {
+    "Class": "ULong",
+    "Function": "UInt",
+    "Type": "uint",
+    "Plural": "true",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "UShortUInt",
+    "Function": "UInt",
+    "Type": "uint",
+    "Plural": "true",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "SLong",
+    "Function": "SInt",
+    "Type": "int",
+    "Plural": "true"
+  },
+  {
+    "Class": "URational",
+    "Type": "URational",
+    "Plural": "true"
+  },
+  {
+    "Class": "SRational",
+    "Type": "SRational",
+    "Plural": "true"
+  },
+  {
+    "Class": "Float",
+    "Type": "float",
+    "Plural": "false"
+  },
+  {
+    "Class": "Double",
+    "Type": "double",
+    "Plural": "false"
+  },
+  {
+    "Class": "DateTime",
+    "Type": "DateTime",
+    "Single": "true"
+  },
+  {
+    "Class": "GpsDate",
+    "Type": "DateTime",
+    "Single": "true"
+  },
+  {
+    "Class": "TimeOffset",
+    "Type": "TimeSpan",
+    "Single": "true"
+  },
+  {
+    "Class": "Binary",
+    "Function": "Byte",
+    "Type": "byte",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "BinaryExtern",
+    "Function": "Byte",
+    "Type": "byte",
+    "NoIfdFunction": "true"
+  },
+  {
+    "Class": "Apex1",
+    "Type": "double",
+    "Single": "true"
+  },
+  {
+    "Class": "Apex2",
+    "Type": "double",
+    "Single": "true"
+  },
+  {
+    "Class": "SubFileType",
+    "Type": "SubFileType",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "ULong"
+  },
+  {
+    "Class": "LengthUnit",
+    "Type": "LengthUnit",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "Orientation",
+    "Type": "Orientation",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "ColorSpace",
+    "Type": "ColorSpace",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "ExposureMode",
+    "Type": "ExposureMode",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "ExposureProgram",
+    "Type": "ExposureProgram",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "PlanarConfiguration",
+    "Type": "PlanarConfiguration",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "Predictor",
+    "Type": "Predictor",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "Compression",
+    "Type": "Compression",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "WhiteBalance",
+    "Type": "WhiteBalance",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "MeteringMode",
+    "Type": "MeteringMode",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "FocalPlaneResolutionUnit",
+    "Type": "FocalPlaneResolutionUnit",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "SensitivityType",
+    "Type": "SensitivityType",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "SceneCaptureType",
+    "Type": "SceneCaptureType",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "CustomRendered",
+    "Type": "CustomRendered",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "PhotometricInterpretation",
+    "Type": "PhotometricInterpretation",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  },
+  {
+    "Class": "Flash",
+    "Type": "Flash",
+    "Single": "true",
+    "Enum": "true",
+    "EnumBase": "UShort"
+  }
+]

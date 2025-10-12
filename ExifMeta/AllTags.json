@@ -1,0 +1,1525 @@
+[
+  {
+    "Name": "NewSubfileType",
+    "Ifd": "Standard",
+    "Tag": "0x00FE",
+    "User": "false",
+    "Types": [ "ULong" ],
+    "Class": "SubFileType"
+  },
+  {
+    "Name": "SubfileType",
+    "Ifd": "Standard",
+    "Tag": "0x00FE",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "ImageWidth",
+    "Ifd": "Standard",
+    "Tag": "0x0100",
+    "User": "false",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "ImageHeight",
+    "Ifd": "Standard",
+    "Tag": "0x0101",
+    "User": "false",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "BitsPerSample",
+    "Ifd": "Standard",
+    "Tag": "0x0102",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "-1"
+  },
+  {
+    "Name": "Compression",
+    "Ifd": "Standard",
+    "Tag": "0x0103",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Class": "Compression"
+  },
+  {
+    "Name": "PhotometricInterpretation",
+    "Ifd": "Standard",
+    "Tag": "0x0106",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Class": "PhotometricInterpretation"
+  },
+  {
+    "Name": "Threshholding",
+    "Ifd": "Standard",
+    "Tag": "0x0107",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "CellWidth",
+    "Ifd": "Standard",
+    "Tag": "0x0108",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "CellLength",
+    "Ifd": "Standard",
+    "Tag": "0x0109",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "FillOrder",
+    "Ifd": "Standard",
+    "Tag": "0x010a",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "DocumentName",
+    "Ifd": "Standard",
+    "Tag": "0x010d",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "ImageDescription",
+    "Ifd": "Standard",
+    "Tag": "0x010e",
+    "User": "true",
+    "Types": [ "Ascii", "Utf8" ],
+    "Class": "StringUtf8"
+  },
+  {
+    "Name": "Make",
+    "Ifd": "Standard",
+    "Tag": "0x010f",
+    "User": "true",
+    "Types": [ "Ascii", "Utf8" ],
+    "Class": "StringUtf8"
+  },
+  {
+    "Name": "Model",
+    "Ifd": "Standard",
+    "Tag": "0x0110",
+    "User": "true",
+    "Types": [ "Ascii", "Utf8" ],
+    "Class": "StringUtf8"
+  },
+  {
+    "Name": "StripOffsets",
+    "Ifd": "Standard",
+    "Tag": "0x0111",
+    "User": "false",
+    "Types": [ "ULong", "UShort" ],
+    "Count": "-1",
+    "Class": "UShortUInt",
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "Orientation",
+    "Ifd": "Standard",
+    "Tag": "0x0112",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Class": "Orientation"
+  },
+  {
+    "Name": "SamplesPerPixel",
+    "Ifd": "Standard",
+    "Tag": "0x0115",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "RowsPerStrip",
+    "Ifd": "Standard",
+    "Tag": "0x0116",
+    "User": "false",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "StripByteCounts",
+    "Ifd": "Standard",
+    "Tag": "0x0117",
+    "User": "false",
+    "Types": [ "ULong", "UShort" ],
+    "Count": "-1",
+    "Class": "UShortUInt",
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "MinSampleValue",
+    "Ifd": "Standard",
+    "Tag": "0x0118",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "MaxSampleValue",
+    "Ifd": "Standard",
+    "Tag": "0x0119",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "XResolution",
+    "Ifd": "Standard",
+    "Tag": "0x011a",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "YResolution",
+    "Ifd": "Standard",
+    "Tag": "0x011b",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "PlanarConfiguration",
+    "Ifd": "Standard",
+    "Tag": "0x011c",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Class": "PlanarConfiguration"
+  },
+  {
+    "Name": "PageName",
+    "Ifd": "Standard",
+    "Tag": "0x011d",
+    "User": "false",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "XPosition",
+    "Ifd": "Standard",
+    "Tag": "0x011e",
+    "User": "false",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "YPosition",
+    "Ifd": "Standard",
+    "Tag": "0x011f",
+    "User": "false",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "FreeOffsets",
+    "Ifd": "Standard",
+    "Tag": "0x0120",
+    "User": "false",
+    "Types": [ "ULong" ],
+    "ReadOnly": "true"
+  },
+  {
+    "Name": "FreeByteCounts",
+    "Ifd": "Standard",
+    "Tag": "0x0121",
+    "User": "false",
+    "Types": [ "ULong" ],
+    "ReadOnly": "true"
+  },
+  {
+    "Name": "GrayResponseUnit",
+    "Ifd": "Standard",
+    "Tag": "0x0122",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "GrayResponseCurve",
+    "Ifd": "Standard",
+    "Tag": "0x0123",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "-1"
+  },
+  {
+    "Name": "T4Options",
+    "Ifd": "Standard",
+    "Tag": "0x0124",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "T6Options",
+    "Ifd": "Standard",
+    "Tag": "0x0125",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "ResolutionUnit",
+    "Ifd": "Standard",
+    "Tag": "0x0128",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Class": "LengthUnit"
+  },
+  {
+    "Name": "PageNumber",
+    "Ifd": "Standard",
+    "Tag": "0x0129",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "2"
+  },
+  {
+    "Name": "TransferFunction",
+    "Ifd": "Standard",
+    "Tag": "0x012d",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "768"
+  },
+  {
+    "Name": "Software",
+    "Ifd": "Standard",
+    "Tag": "0x0131",
+    "User": "true",
+    "Types": [ "Ascii", "Utf8" ],
+    "Class": "StringUtf8"
+  },
+  {
+    "Name": "DateTime",
+    "Ifd": "Standard",
+    "Tag": "0x0132",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "DateTime"
+  },
+  {
+    "Name": "Artist",
+    "Ifd": "Standard",
+    "Tag": "0x013b",
+    "User": "true",
+    "Types": [ "Ascii", "Utf8" ],
+    "Class": "StringUtf8"
+  },
+  {
+    "Name": "HostComputer",
+    "Ifd": "Standard",
+    "Tag": "0x013c",
+    "User": "false",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "Predictor",
+    "Ifd": "Standard",
+    "Tag": "0x013d",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Class": "Predictor"
+  },
+  {
+    "Name": "WhitePoint",
+    "Ifd": "Standard",
+    "Tag": "0x013e",
+    "User": "false",
+    "Types": [ "URational" ],
+    "Count": "2"
+  },
+  {
+    "Name": "PrimaryChromaticities",
+    "Ifd": "Standard",
+    "Tag": "0x013f",
+    "User": "false",
+    "Types": [ "URational" ],
+    "Count": "6"
+  },
+  {
+    "Name": "ColorMap",
+    "Ifd": "Standard",
+    "Tag": "0x0140",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "HalftoneHints",
+    "Ifd": "Standard",
+    "Tag": "0x0141",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "2"
+  },
+  {
+    "Name": "TileWidth",
+    "Ifd": "Standard",
+    "Tag": "0x0142",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "TileLength",
+    "Ifd": "Standard",
+    "Tag": "0x0143",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "TileOffsets",
+    "Ifd": "Standard",
+    "Tag": "0x0144",
+    "User": "false",
+    "Types": [ "ULong", "UShort" ],
+    "Class": "UShortUInt",
+    "Count": "-1",
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "TileByteCounts",
+    "Ifd": "Standard",
+    "Tag": "0x0145",
+    "User": "false",
+    "Types": [ "ULong", "UShort" ],
+    "Class": "UShortUInt",
+    "Count": "-1",
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "SubIFDs",
+    "Ifd": "Standard",
+    "Tag": "0x014a",
+    "User": "false",
+    "Types": [ "Ifd", "ULong" ],
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "InkSet",
+    "Ifd": "Standard",
+    "Tag": "0x014c",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "InkNames",
+    "Ifd": "Standard",
+    "Tag": "0x014d",
+    "User": "false",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "NumberOfInks",
+    "Ifd": "Standard",
+    "Tag": "0x014e",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "DotRange",
+    "Ifd": "Standard",
+    "Tag": "0x0150",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "TargetPrinter",
+    "Ifd": "Standard",
+    "Tag": "0x0151",
+    "User": "false",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "ExtraSamples",
+    "Ifd": "Standard",
+    "Tag": "0x0152",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "SampleFormat",
+    "Ifd": "Standard",
+    "Tag": "0x0153",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "-1"
+  },
+  {
+    "Name": "SMinSampleValue",
+    "Ifd": "Standard",
+    "Tag": "0x0154",
+    "User": "false",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "SMaxSampleValue",
+    "Ifd": "Standard",
+    "Tag": "0x0155",
+    "User": "false",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "TransferRange",
+    "Ifd": "Standard",
+    "Tag": "0x0156",
+    "User": "false",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "JpegTabels",
+    "Ifd": "Standard",
+    "Tag": "0x015b",
+    "User": "false",
+    "Types": [ "Byte" ],
+    "Count": "-1"
+  },
+  {
+    "Name": "GlobalParametersIFD",
+    "Ifd": "Standard",
+    "Tag": "0x0190",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "JpegProc",
+    "Ifd": "Standard",
+    "Tag": "0x0200",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "JpegInterchangeFormat",
+    "Ifd": "Standard",
+    "Tag": "0x0201",
+    "User": "false",
+    "Types": [ "ULong" ],
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "JpegInterchangeFormatLength",
+    "Ifd": "Standard",
+    "Tag": "0x0202",
+    "User": "false",
+    "Types": [ "ULong" ],
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "JpegRestartInterval",
+    "Ifd": "Standard",
+    "Tag": "0x0203",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "JpegLosslessPredictors",
+    "Ifd": "Standard",
+    "Tag": "0x0205",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "JpegPointTransforms",
+    "Ifd": "Standard",
+    "Tag": "0x0206",
+    "User": "false",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "JpegQTabels",
+    "Ifd": "Standard",
+    "Tag": "0x0207",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary"
+  },
+  {
+    "Name": "JpegDCTables",
+    "Ifd": "Standard",
+    "Tag": "0x0208",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary"
+  },
+  {
+    "Name": "JpegACTables",
+    "Ifd": "Standard",
+    "Tag": "0x0209",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary"
+  },
+  {
+    "Name": "YCbCrCoefficients",
+    "Ifd": "Standard",
+    "Tag": "0x0211",
+    "User": "false",
+    "Types": [ "URational" ],
+    "Count": "3"
+  },
+  {
+    "Name": "YCbCrSubSampling",
+    "Ifd": "Standard",
+    "Tag": "0x0212",
+    "User": "false",
+    "Types": [ "UShort" ],
+    "Count": "2"
+  },
+  {
+    "Name": "YCbCrPositioning",
+    "Ifd": "Standard",
+    "Tag": "0x0213",
+    "User": "false",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "ReferenceBlackWhite",
+    "Ifd": "Standard",
+    "Tag": "0x0214",
+    "User": "false",
+    "Types": [ "URational" ],
+    "Count": "6"
+  },
+  {
+    "Name": "XmpMetadata",
+    "Ifd": "Standard",
+    "Tag": "0x02bc",
+    "User": "false",
+    "Types": [ "Byte" ],
+    "Count": "-1"
+  },
+  {
+    "Name": "Copyright",
+    "Ifd": "Standard",
+    "Tag": "0x8298",
+    "User": "true",
+    "Types": [ "Ascii", "Utf8" ],
+    "Class": "StringUtf8"
+  },
+  {
+    "Name": "IptcMetadata",
+    "Ifd": "Standard",
+    "Tag": "0x83bb",
+    "User": "false",
+    "Types": [ "ULong", "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary"
+  },
+  {
+    "Name": "PhotoshopSettings",
+    "Ifd": "Standard",
+    "Tag": "0x8649",
+    "User": "false",
+    "Types": [ "Byte" ],
+    "Count": "-1",
+    "ReadOnly": "true"
+  },
+  {
+    "Name": "ExifIfdPointer",
+    "Ifd": "Standard",
+    "Tag": "0x8769",
+    "User": "false",
+    "Types": [ "ULong", "Ifd" ],
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "InterColorProfile",
+    "Ifd": "Standard",
+    "Tag": "0x8773",
+    "User": "false",
+    "Types": [ "ULong", "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary"
+  },
+  {
+    "Name": "GpsIfdPointer",
+    "Ifd": "Standard",
+    "Tag": "0x8825",
+    "User": "false",
+    "Types": [ "ULong", "Ifd" ],
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "TIFFEPStandardID",
+    "Ifd": "Standard",
+    "Tag": "0x9216",
+    "User": "false",
+    "Types": [ "Byte" ],
+    "Count": "4"
+  },
+  {
+    "Name": "ImageSourceData",
+    "Ifd": "Standard",
+    "Tag": "0x935c",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Count": "-1",
+    "Class": "BinaryExtern",
+    "ReadOnly": "true",
+    "DontLoadPayload": "true"
+  },
+  {
+    "Name": "XpTitle",
+    "Ifd": "Standard",
+    "Tag": "0x9c9b",
+    "User": "true",
+    "Types": [ "Byte" ],
+    "Class": "StringXp"
+  },
+  {
+    "Name": "XpComment",
+    "Ifd": "Standard",
+    "Tag": "0x9c9c",
+    "User": "true",
+    "Types": [ "Byte" ],
+    "Class": "StringXp"
+  },
+  {
+    "Name": "XpAuthor",
+    "Ifd": "Standard",
+    "Tag": "0x9c9d",
+    "User": "true",
+    "Types": [ "Byte" ],
+    "Class": "StringXp"
+  },
+  {
+    "Name": "XpKeywords",
+    "Ifd": "Standard",
+    "Tag": "0x9c9e",
+    "User": "true",
+    "Types": [ "Byte" ],
+    "Class": "StringXp"
+  },
+  {
+    "Name": "XpSubject",
+    "Ifd": "Standard",
+    "Tag": "0x9c9f",
+    "User": "true",
+    "Types": [ "Byte" ],
+    "Class": "StringXp"
+  },
+  {
+    "Name": "ExposureTime",
+    "Ifd": "Exif",
+    "Tag": "0x829a",
+    "User": "true",
+    "Types": [ "URational" ],
+    "DisplayConverter": "ExposureTimeConverter"
+  },
+  {
+    "Name": "FNumber",
+    "Ifd": "Exif",
+    "Tag": "0x829d",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "ExposureProgram",
+    "Ifd": "Exif",
+    "Tag": "0x8822",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "ExposureProgram"
+  },
+  {
+    "Name": "SpectralSensitivity",
+    "Ifd": "Exif",
+    "Tag": "0x8824",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "PhotographicSensitivity",
+    "Ifd": "Exif",
+    "Tag": "0x8827",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "Oecf",
+    "Ifd": "Exif",
+    "Tag": "0x8828",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Class": "Binary",
+    "Count": "-1"
+  },
+  {
+    "Name": "SensitivityType",
+    "Ifd": "Exif",
+    "Tag": "0x8830",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "SensitivityType"
+  },
+  {
+    "Name": "StandardOutputSensitivity",
+    "Ifd": "Exif",
+    "Tag": "0x8831",
+    "User": "true",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "RecommendedExposureIndex",
+    "Ifd": "Exif",
+    "Tag": "0x8832",
+    "User": "true",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "IsoSpeed",
+    "Ifd": "Exif",
+    "Tag": "0x8833",
+    "User": "true",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "IsoSpeedLatitudeyyy",
+    "Ifd": "Exif",
+    "Tag": "0x8834",
+    "User": "true",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "IsoSpeedLatitudezzz",
+    "Ifd": "Exif",
+    "Tag": "0x8835",
+    "User": "true",
+    "Types": [ "ULong" ]
+  },
+  {
+    "Name": "ExifVersion",
+    "Ifd": "Exif",
+    "Tag": "0x9000",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "FourChar"
+  },
+  {
+    "Name": "DateTimeOriginal",
+    "Ifd": "Exif",
+    "Tag": "0x9003",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "DateTime"
+  },
+  {
+    "Name": "DateTimeDigitized",
+    "Ifd": "Exif",
+    "Tag": "0x9004",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "DateTime"
+  },
+  {
+    "Name": "OffsetTime",
+    "Ifd": "Exif",
+    "Tag": "0x9010",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "TimeOffset"
+  },
+  {
+    "Name": "OffsetTimeOriginal",
+    "Ifd": "Exif",
+    "Tag": "0x9011",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "TimeOffset"
+  },
+  {
+    "Name": "OffsetTimeDigitized",
+    "Ifd": "Exif",
+    "Tag": "0x9012",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "TimeOffset"
+  },
+  {
+    "Name": "ComponentsConfiguration",
+    "Ifd": "Exif",
+    "Tag": "0x9101",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "Binary",
+    "Count": "-1"
+  },
+  {
+    "Name": "CompressedBitsPerPixel",
+    "Ifd": "Exif",
+    "Tag": "0x9102",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "ShutterSpeedValue",
+    "Ifd": "Exif",
+    "Tag": "0x9201",
+    "User": "true",
+    "Types": [ "SRational" ],
+    "Class": "Apex1"
+  },
+  {
+    "Name": "ApertureValue",
+    "Ifd": "Exif",
+    "Tag": "0x9202",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Class": "Apex2"
+  },
+  {
+    "Name": "BrightnessValue",
+    "Ifd": "Exif",
+    "Tag": "0x9203",
+    "User": "true",
+    "Types": [ "SRational" ]
+  },
+  {
+    "Name": "ExposureCompensation",
+    "Ifd": "Exif",
+    "Tag": "0x9204",
+    "User": "true",
+    "Types": [ "SRational" ],
+    "DisplayConverter": "ExposureCompensationConverter"
+  },
+  {
+    "Name": "MaxApertureValue",
+    "Ifd": "Exif",
+    "Tag": "0x9205",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Class": "Apex2"
+  },
+  {
+    "Name": "SubjectDistance",
+    "Ifd": "Exif",
+    "Tag": "0x9206",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "MeteringMode",
+    "Ifd": "Exif",
+    "Tag": "0x9207",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "MeteringMode"
+  },
+  {
+    "Name": "LightSource",
+    "Ifd": "Exif",
+    "Tag": "0x9208",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "Flash",
+    "Ifd": "Exif",
+    "Tag": "0x9209",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "Flash"
+  },
+  {
+    "Name": "FocalLength",
+    "Ifd": "Exif",
+    "Tag": "0x920a",
+    "User": "true",
+    "Types": [ "URational" ],
+    "DisplayConverter": "AddMmUnitConverter"
+  },
+  {
+    "Name": "SubjectArea",
+    "Ifd": "Exif",
+    "Tag": "0x9214",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Count": "-1"
+  },
+  {
+    "Name": "MakerNote",
+    "Ifd": "Exif",
+    "Tag": "0x927c",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "UserComment",
+    "Ifd": "Exif",
+    "Tag": "0x9286",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "MulticodeUnicode"
+  },
+  {
+    "Name": "SubsecTime",
+    "Ifd": "Exif",
+    "Tag": "0x9290",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "SubsecTimeOriginal",
+    "Ifd": "Exif",
+    "Tag": "0x9291",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "AmbientTemperature",
+    "Ifd": "Exif",
+    "Tag": "0x9400",
+    "User": "true",
+    "Types": [ "SRational" ],
+    "DisplayConverter": "AddCUnitConverter"
+  },
+  {
+    "Name": "SubsecTimeDigitized",
+    "Ifd": "Exif",
+    "Tag": "0x9292",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "FlashPixVersion",
+    "Ifd": "Exif",
+    "Tag": "0xa000",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "FourChar"
+  },
+  {
+    "Name": "ColorSpace",
+    "Ifd": "Exif",
+    "Tag": "0xa001",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "ColorSpace"
+  },
+  {
+    "Name": "PixelXDimension",
+    "Ifd": "Exif",
+    "Tag": "0xa002",
+    "User": "true",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "PixelYDimension",
+    "Ifd": "Exif",
+    "Tag": "0xa003",
+    "User": "true",
+    "Types": [ "UShort", "ULong" ],
+    "Class": "UShortUInt"
+  },
+  {
+    "Name": "RelatedSoundFile",
+    "Ifd": "Exif",
+    "Tag": "0xa004",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "InteropIfdPointer",
+    "Ifd": "Exif",
+    "Tag": "0xa005",
+    "User": "false",
+    "Types": [ "ULong" ],
+    "ReadOnly": "true",
+    "NoAccessFunction": "true"
+  },
+  {
+    "Name": "FlashEnergy",
+    "Ifd": "Exif",
+    "Tag": "0xa20b",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "SpatialFrequencyResponse",
+    "Ifd": "Exif",
+    "Tag": "0xa20c",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Class": "Binary",
+    "Count": "-1"
+  },
+  {
+    "Name": "FocalPlaneXResolution",
+    "Ifd": "Exif",
+    "Tag": "0xa20e",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "FocalPlaneYResolution",
+    "Ifd": "Exif",
+    "Tag": "0xa20f",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "FocalPlaneResolutionUnit",
+    "Ifd": "Exif",
+    "Tag": "0xa210",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "FocalPlaneResolutionUnit"
+  },
+  {
+    "Name": "SubjectLocation",
+    "Ifd": "Exif",
+    "Tag": "0xa214",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Count": "2"
+  },
+  {
+    "Name": "SensingMethod",
+    "Ifd": "Exif",
+    "Tag": "0xa217",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "FileSource",
+    "Ifd": "Exif",
+    "Tag": "0xa300",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary"
+  },
+  {
+    "Name": "SceneType",
+    "Ifd": "Exif",
+    "Tag": "0xa301",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "Binary"
+  },
+  {
+    "Name": "CfaPattern",
+    "Ifd": "Exif",
+    "Tag": "0xa302",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "Binary",
+    "Count": "-1"
+  },
+  {
+    "Name": "CustomRendered",
+    "Ifd": "Exif",
+    "Tag": "0xa401",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "CustomRendered"
+  },
+  {
+    "Name": "ExposureMode",
+    "Ifd": "Exif",
+    "Tag": "0xa402",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "ExposureMode"
+  },
+  {
+    "Name": "WhiteBalance",
+    "Ifd": "Exif",
+    "Tag": "0xa403",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "WhiteBalance"
+  },
+  {
+    "Name": "DigitalZoomRatio",
+    "Ifd": "Exif",
+    "Tag": "0xa404",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "FocalLengthIn35mmFilm",
+    "Ifd": "Exif",
+    "Tag": "0xa405",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "SceneCaptureType",
+    "Ifd": "Exif",
+    "Tag": "0xa406",
+    "User": "true",
+    "Types": [ "UShort" ],
+    "Class": "SceneCaptureType"
+  },
+  {
+    "Name": "GainControl",
+    "Ifd": "Exif",
+    "Tag": "0xa407",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "Contrast",
+    "Ifd": "Exif",
+    "Tag": "0xa408",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "Saturation",
+    "Ifd": "Exif",
+    "Tag": "0xa409",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "Sharpness",
+    "Ifd": "Exif",
+    "Tag": "0xa40a",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "DeviceSettingDescription",
+    "Ifd": "Exif",
+    "Tag": "0xa40b",
+    "User": "false",
+    "Types": [ "Undefined" ],
+    "Class": "Binary",
+    "Count": "-1"
+  },
+  {
+    "Name": "SubjectDistanceRange",
+    "Ifd": "Exif",
+    "Tag": "0xa40c",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "ImageUniqueId",
+    "Ifd": "Exif",
+    "Tag": "0xa420",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "CameraOwnerName",
+    "Ifd": "Exif",
+    "Tag": "0xa430",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "BodySerialNumber",
+    "Ifd": "Exif",
+    "Tag": "0xa431",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "LensSpecification",
+    "Ifd": "Exif",
+    "Tag": "0xa432",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Count": "4"
+  },
+  {
+    "Name": "LensMake",
+    "Ifd": "Exif",
+    "Tag": "0xa433",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "LensModel",
+    "Ifd": "Exif",
+    "Tag": "0xa434",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "LensSerialNumber",
+    "Ifd": "Exif",
+    "Tag": "0xa435",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "Padding",
+    "Ifd": "Exif",
+    "Tag": "0xea1c",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Count": "-1",
+    "Class": "Binary",
+    "ReadOnly": "true"
+  },
+  {
+    "Name": "OffsetSchema",
+    "Ifd": "Exif",
+    "Tag": "0xea1d",
+    "User": "true",
+    "Types": [ "SLong" ]
+  },
+  {
+    "Name": "GpsVersionId",
+    "Ifd": "Gps",
+    "Tag": "0x0000",
+    "User": "true",
+    "Types": [ "Byte" ],
+    "Count": "4"
+  },
+  {
+    "Name": "GpsLatitudeRef",
+    "Ifd": "Gps",
+    "Tag": "0x0001",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Count": "3"
+  },
+  {
+    "Name": "GpsLatitude",
+    "Ifd": "Gps",
+    "Tag": "0x0002",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsLongitudeRef",
+    "Ifd": "Gps",
+    "Tag": "0x0003",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsLongitude",
+    "Ifd": "Gps",
+    "Tag": "0x0004",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Count": "3"
+  },
+  {
+    "Name": "GpsAltitudeRef",
+    "Ifd": "Gps",
+    "Tag": "0x0005",
+    "User": "true",
+    "Types": [ "Byte" ]
+  },
+  {
+    "Name": "GpsAltitude",
+    "Ifd": "Gps",
+    "Tag": "0x0006",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsTimeStamp",
+    "Ifd": "Gps",
+    "Tag": "0x0007",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Count": "3"
+  },
+  {
+    "Name": "GpsSatellites",
+    "Ifd": "Gps",
+    "Tag": "0x0008",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "GpsStatus",
+    "Ifd": "Gps",
+    "Tag": "0x0009",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsMeasureMode",
+    "Ifd": "Gps",
+    "Tag": "0x000a",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsDop",
+    "Ifd": "Gps",
+    "Tag": "0x000b",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsSpeedRef",
+    "Ifd": "Gps",
+    "Tag": "0x000c",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsSpeed",
+    "Ifd": "Gps",
+    "Tag": "0x000d",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsTrackRef",
+    "Ifd": "Gps",
+    "Tag": "0x000e",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsTrack",
+    "Ifd": "Gps",
+    "Tag": "0x000f",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsImgDirectionRef",
+    "Ifd": "Gps",
+    "Tag": "0x0010",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsImgDirection",
+    "Ifd": "Gps",
+    "Tag": "0x0011",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsMapDatum",
+    "Ifd": "Gps",
+    "Tag": "0x0012",
+    "User": "true",
+    "Types": [ "Ascii" ]
+  },
+  {
+    "Name": "GpsDestLatitudeRef",
+    "Ifd": "Gps",
+    "Tag": "0x0013",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsDestLatitude",
+    "Ifd": "Gps",
+    "Tag": "0x0014",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Count": "3"
+  },
+  {
+    "Name": "GpsDestLongitudeRef",
+    "Ifd": "Gps",
+    "Tag": "0x0015",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsDestLongitude",
+    "Ifd": "Gps",
+    "Tag": "0x0016",
+    "User": "true",
+    "Types": [ "URational" ],
+    "Count": "3"
+  },
+  {
+    "Name": "GpsDestBearingRef",
+    "Ifd": "Gps",
+    "Tag": "0x0017",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsDestBearing",
+    "Ifd": "Gps",
+    "Tag": "0x0018",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsDestDistanceRef",
+    "Ifd": "Gps",
+    "Tag": "0x0019",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Count": "2"
+  },
+  {
+    "Name": "GpsDestDistance",
+    "Ifd": "Gps",
+    "Tag": "0x001a",
+    "User": "true",
+    "Types": [ "URational" ]
+  },
+  {
+    "Name": "GpsProcessingMethod",
+    "Ifd": "Gps",
+    "Tag": "0x001b",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "MulticodeAscii"
+  },
+  {
+    "Name": "GpsAreaInformation",
+    "Ifd": "Gps",
+    "Tag": "0x001c",
+    "User": "true",
+    "Types": [ "Undefined" ],
+    "Class": "MulticodeAscii"
+  },
+  {
+    "Name": "GpsDateStamp",
+    "Ifd": "Gps",
+    "Tag": "0x001d",
+    "User": "true",
+    "Types": [ "Ascii" ],
+    "Class": "GpsDate"
+  },
+  {
+    "Name": "GpsDifferential",
+    "Ifd": "Gps",
+    "Tag": "0x001e",
+    "User": "true",
+    "Types": [ "UShort" ]
+  },
+  {
+    "Name": "GpsHPositioningError",
+    "Ifd": "Gps",
+    "Tag": "0x001f",
+    "User": "true",
+    "Types": [ "URational" ]
+  }
+]
