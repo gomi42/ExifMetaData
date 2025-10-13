@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using ExifMeta;
 using ExifMetaFile;
@@ -25,9 +26,19 @@ namespace Tests
 
         private void Copy(string filename)
         {
+            // read the metadata
             FileStream sourceStream = File.OpenRead(filename);
             var metaData = ExifDataFile.Load(sourceStream);
 
+            // modify the metadata
+            var srcEx = metaData.ExifMetaData;
+            var ifd0 = srcEx.ImageFileDirectories[0];
+            ifd0.SetArtist("John Doe");
+
+            // analyze XMP
+            var xmpString = Encoding.UTF8.GetString(metaData.Xmp);
+
+            // prepare the metadata for writing: keep, remove, overwrite
             var mdw = new ImageMetaDataWrite();
 
             mdw.ExifMetaData = metaData.ExifMetaData;
@@ -35,7 +46,6 @@ namespace Tests
 
             mdw.Xmp = metaData.Xmp;
             mdw.XmpOption = metaData.Xmp != null ? ImageMetaDataWriteOption.Overwrite : ImageMetaDataWriteOption.KeepOriginal;
-            //var xmpString = Encoding.UTF8.GetString(metaData.Xmp);
 
             mdw.Icc = metaData.Icc;
             mdw.IccOption = metaData.Icc != null ? ImageMetaDataWriteOption.Overwrite : ImageMetaDataWriteOption.KeepOriginal;
@@ -51,6 +61,7 @@ namespace Tests
             //mdw.IccOption = ImageMetaDataWriteOption.Remove;
             //mdw.IptcOption = ImageMetaDataWriteOption.Remove;
 
+            // write the new file
             var destStream = File.Create(GetCopyFilename(filename));
             ExifDataFile.Save(sourceStream, destStream, mdw);
 
@@ -293,28 +304,26 @@ namespace Tests
             globalFilename = files[0];
             ShowExifData(globalFilename);
         }
-
+        
         private void Button_MiscTest(object sender, RoutedEventArgs e)
         {
             FileStream sourceStream = File.OpenRead(globalFilename);
             var metaData = ExifDataFile.Load(sourceStream);
 
             var srcEx = metaData.ExifMetaData;
-            var srcIfd = srcEx.ImageFileDirectories[0];
-            var t1 = srcIfd.GetProperty(TagId.Orientation);
-            var t = srcIfd.GetOrientation();
+            var ifd0 = srcEx.ImageFileDirectories[0];
+            var t1 = ifd0.GetProperty(TagId.Orientation);
+            var t = ifd0.GetOrientation();
 
             try
             {
-                srcIfd.SetProperty(new UShortProperty(TagId.Orientation, 42));
+                ifd0.SetProperty(new UShortProperty(TagId.Orientation, 42));
             }
             catch (Exception ex)
             {
             }
-
-            sourceStream.Close();
         }
-    }
+}
 
     /////////////////////////////////////////////////////////////
 

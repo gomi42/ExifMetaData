@@ -446,7 +446,7 @@ namespace ExifMeta
                         return GpsIfd;
 
                     case IfdId.Interop:
-                        return InteropIfd;
+                        return ExifIfd.InteropIfd;
 
                     default:
                         throw new ExifException("IFD error");
