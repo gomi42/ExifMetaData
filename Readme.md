@@ -40,7 +40,7 @@ ifd0.SetLensModel("My Lens");
 **ExifMetaData** offers 3 different access levels to the metadata.
 
 #### Level 1
-Level 1 gives you a very low level access. There are only the 2 methods `SetProperty` and `GetProperty`. Both methods require a tag ID. Additionally you need to know the type you want to set or get. All types follow the naming convention **xxxProperty**.
+Level 1 gives you a very low level access. There are only the 2 methods `SetProperty` and `GetProperty`. Both methods require a tag ID. Additionally you need to know the type you want to set or get. All types follow the naming convention **xxxProperty** and inherit from `Property`.
 
 ```
 void SetProperty(Property property)
@@ -53,8 +53,12 @@ Only level 1 offers methods to test and remove properties.
 
 Example:
 ```
+ifd.SetProperty(new UShortProperty(TagId.SamplesPerPixel, 3);
 ifd.SetProperty(new StringProperty(TagId.Artist, "John Doe");
 ifd.SetProperty(new OrientationProperty(TagId.Orientation, Orientation.Horizontal));
+
+UShortProperty ushortProp = ifd.GetProperty(TagId.SamplesPerPixel);
+ushort samplesPerPixel = ushortProp.Value;
 
 StringProperty strProp = ifd.GetProperty(TagId.Artist);
 string artist = strProp.Value;
@@ -64,29 +68,41 @@ orientation = orientProp.Value;
 ```
 
 #### Level 2
-Level 2 simplifies the access a bit and offers for each type its own access methods. Don't be confused, the methods refer to type only, you still need to specify the tag ID to get or set. Level 2 methods follow the naming convention **GetxxxProperty** and **SetxxxProperty** while **xxxProperty** refers to the type as in level 1. Refer to **IfdProperties.cs** for all available methods.
+Level 2 simplifies the access a bit and offers for each type its own access methods. Don't be confused, the methods refer to the type only, you still need to specify the tag ID. Level 2 methods follow the naming convention **GetxxxProperty** and **SetxxxProperty** while **xxxProperty** refers to the type as in level 1. Refer to **IfdProperties.cs** for all available methods.
 
 ```
-ifd.SetStringProperty(TagId.Artist, "John Doe");
-ifd.SetOrientationProperty(TagId.Orientation, Orientation.Horizontal);
+ifd0.SetUShortProperty(TagId.SamplesPerPixel, 3);
+ifd0.SetStringProperty(TagId.Artist, "John Doe");
+ifd0.SetOrientationProperty(TagId.Orientation, Orientation.Horizontal);
 
-string artist = ifd.GetStringProperty(TagId.Artist);
-Orientation orientation = ifd.GetOrientationProperty(TagId.Orientation);
+ushort samplesPerPixel = ifd0.GetUShortProperty(TagId.SamplesPerPixel);
+string artist = ifd0.GetStringProperty(TagId.Artist);
+Orientation orientation = ifd0.GetOrientationProperty(TagId.Orientation);
 ```
 
 #### Level 3
 Level 3 combines all and offers for each tag ID its own get and set method. Refer to **UserExtensions.cs** for all available methods.
 ```
-ifd.SetArtist("John Doe");
-ifd.SetOrientation(Orientation.Horizontal);
+ifd0.SetSamplesPerPixel(3);
+ifd0.SetArtist("John Doe");
+ifd0.SetOrientation(Orientation.Horizontal);
 
-string artist = ifd.GetArtist();
-Orientation orientation = ifd.GetOrientation();
+ushort samplesPerPixel = ifd0.GetSamplesPerPixel();
+string artist = ifd0.GetArtist();
+Orientation orientation = ifd0.GetOrientation();
+```
+### Deserialize Binary Metadata
+The following example demonstrates how to deserialize binary exif metadata from a given stream. The position of the stream must be set to the beginning of the exif metadata.
+```
+var reader = new ExifBinaryReader();
+reader.ReadIfdWithTiffHeader(stream, true, out ExifMetaData exifMeta, out _);
+
+// use exifMeta
 ```
 
 ### Create Metadata from Scratch
 
-In case you need the exif metadata as binary data in memory (or)
+The following example demonstrates how to create EXIF metadata from scratch and convert them to a binary byte array in memory:
 
 ```
 ExifMetaData exifMeta = new ExifMetaData();
