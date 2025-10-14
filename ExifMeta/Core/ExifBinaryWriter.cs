@@ -23,16 +23,49 @@ namespace ExifMeta
             set => byteOrder = value;
         }
 
-        public byte[] CreateExifBinary()
+        /// <summary>
+        /// Serialize to a byte array.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] WriteBinary()
         {
             using (var destStream = new MemoryStream())
             {
-                WriteAllWithTiffHeader(destStream);
+                Write(destStream);
                 return destStream.ToArray();
             }
         }
 
-        public static void WriteTiffHeader(Stream destStream, int exifBlockOffset, ByteOrder byteOrder)
+        /// <summary>
+        /// Serialize into a stream.
+        /// </summary>
+        /// <param name="destStream"></param>
+        public void Write(Stream destStream)
+        {
+            var renderContext = new RenderContext(destStream, byteOrder, WriteIfd);
+
+            WriteTiffHeader(destStream, TiffHeaderConst.TiffHeaderLength);
+            var binIfds = DryRunAll(TiffHeaderConst.TiffHeaderLength);
+            WriteIfdChain(binIfds, renderContext);
+        }
+
+        /// <summary>
+        /// Get the size of the final serialized data.
+        /// </summary>
+        /// <returns></returns>
+        public uint GetSize()
+        {
+            var dryRunContext = new DryRunContext(TiffHeaderConst.TiffHeaderLength, DryRunBinaryIfd);
+
+            foreach (var ifd in exifMeta.ImageFileDirectories)
+            {
+                DryRunIfd(ifd, dryRunContext);
+            }
+
+            return dryRunContext.WriteIndex;
+        }
+
+        private void WriteTiffHeader(Stream destStream, int exifBlockOffset)
         {
             if (byteOrder == ByteOrder.BigEndian)
             {
@@ -48,41 +81,6 @@ namespace ExifMeta
             destStream.Write(tiffHeader, 0, 4);
         }
 
-        public void WriteTiffHeader(Stream destStream, int exifBlockOffset)
-        {
-            WriteTiffHeader(destStream, exifBlockOffset, byteOrder);
-        }
-
-        public void WriteAllWithTiffHeader(Stream destStream)
-        {
-            var renderContext = new RenderContext(destStream, byteOrder, WriteIfd);
-
-            WriteTiffHeader(destStream, TiffHeaderConst.TiffHeaderLength);
-            var binIfds = DryRunAll(TiffHeaderConst.TiffHeaderLength);
-            WriteIfdChain(binIfds, renderContext);
-        }
-
-        public void WriteAll(Stream destStream, uint exifBlockOffset)
-        {
-            var renderContext = new RenderContext(destStream, byteOrder, WriteIfd);
-
-            var binIfds = DryRunAll(exifBlockOffset);
-            WriteIfdChain(binIfds, renderContext);
-        }
-
-        public uint WriteIfd(Stream destStream, uint exifBlockOffset, bool isLastIfd)
-        {
-            var dryRunContext = new DryRunContext(exifBlockOffset, DryRunBinaryIfd);
-            var renderContext = new RenderContext(destStream, byteOrder, WriteIfd);
-
-            var ifd0 = exifMeta.ImageFileDirectories[0];
-
-            var binIfd = DryRunIfd(ifd0, dryRunContext);
-            WriteIfd(binIfd, isLastIfd, renderContext);
-
-            return dryRunContext.WriteIndex;
-        }
-
         private void WriteIfdChain(List<BinaryIfd> binIfds, RenderContext renderContext)
         {
             var last = binIfds.Count - 1;
@@ -92,18 +90,6 @@ namespace ExifMeta
                 var binIfd = binIfds[i];
                 WriteIfd(binIfd, i == last, renderContext);
             }
-        }
-
-        public uint GetSizeWithTiffHeader()
-        {
-            var dryRunContext = new DryRunContext(TiffHeaderConst.TiffHeaderLength, DryRunBinaryIfd);
-
-            foreach (var ifd in exifMeta.ImageFileDirectories)
-            {
-                DryRunIfd(ifd, dryRunContext);
-            }
-
-            return dryRunContext.WriteIndex;
         }
 
         private List<BinaryIfd> DryRunAll(uint exifBlockOffset)

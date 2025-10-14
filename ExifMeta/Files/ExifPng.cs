@@ -83,8 +83,7 @@ namespace ExifMetaFile
                     case ImageFileBlock.Exif:
                     {
                         var exifReader = new ExifBinaryReader();
-                        exifReader.ReadIfdWithTiffHeader(sourceStream, true, out ExifMetaData exifMetaData, out var _);
-                        imageMetaData.ExifMetaData = exifMetaData;
+                        imageMetaData.ExifMetaData = exifReader.Read(sourceStream);
 
                         break;
                     }
@@ -299,7 +298,7 @@ namespace ExifMetaFile
                     {
                         var exifStream = new MemoryStream();
                         var exifWriter = new ExifBinaryWriter(imageMetaData.ExifMetaData);
-                        exifWriter.WriteAllWithTiffHeader(exifStream);
+                        exifWriter.Write(exifStream);
 
                         var exifBinaryData = exifStream.ToArray();
                         int exifBinaryLen = exifBinaryData.Length;

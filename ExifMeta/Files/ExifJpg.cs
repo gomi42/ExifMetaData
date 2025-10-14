@@ -100,8 +100,7 @@ namespace ExifMetaFile
                 {
                     case ImageFileBlock.Exif:
                     {
-                        exifReader.ReadIfdWithTiffHeader(sourceStream, true, out ExifMetaData exifMetaData, out var _);
-                        imageMetaData.ExifMetaData = exifMetaData;
+                        imageMetaData.ExifMetaData = exifReader.Read(sourceStream);
                         break;
                     }
 
@@ -539,7 +538,7 @@ namespace ExifMetaFile
                 var ifd = imageMetaData.ExifMetaData.ImageFileDirectories[0];
 
                 var exifWriter = new ExifBinaryWriter(imageMetaData.ExifMetaData);
-                var exifBinaryLen = exifWriter.GetSizeWithTiffHeader();
+                var exifBinaryLen = exifWriter.GetSize();
 
                 if (exifBinaryLen > MaxExifBlockLen)
                 {
@@ -556,7 +555,7 @@ namespace ExifMetaFile
                     destStream.Write(headerBuffer, 0, 4);
                     destStream.Write(ExifSignature, 0, ExifSignature.Length);
 
-                    exifWriter.WriteAllWithTiffHeader(destStream);
+                    exifWriter.Write(destStream);
                 }
             }
 

@@ -5,11 +5,44 @@ The **ExifMetaData** library lets you create, read (interpret) and write exif me
 ### Type Safe
 **ExifMetaData** is type safe. Strict type checks are build in and you cannot get around it. In case of strings **ExifMetaData** selects the correct string type for you (ASCII, UNICODE, multi-byte).
 
-### Tag ID
-**ExifMetaData** defines a `tag ID`. It is a handle that fully describes a tag; it combines all information about a tag like the tag number, which IFD the tag belongs to, the type(s) of the tag and more. **TagId.cs** contains all tag IDs.
-
 ### Image File Directories
-Exif metadata consist of image file directories (short IFD). IDFs are chained. This IFD chain is represented as a list of IFDs. The `ExifMetaData` class exposes the property `ImageFileDirectories`. When you want to get or set a tag ID you select or create an IFD first.
+Exif metadata consist of a series of chained image file directories (short IFD). The IFD chain is represented as a list of IFDs. The `ExifMetaData` class exposes the property `ImageFileDirectories`.  `ImageFileDirectories` is the starting point of all operations. Create or select and IFD to get or set a property or remove an IFD.
+
+### Properties
+The implementation of **ExifMetaData** differs a little from similar implementations. The basic idea is that the API of an IFD exposes properties you work with. There several types of properties:
+
+#### Single Type Property
+A single type property holds one or multiple values of the same type. E.g. **Artist** consists of multiple characters, **LensSpecification** requires 4 **URationals**. 99.9% are single type properties. These properties are managed in `Ifd.Properties`.
+
+**Important to note:** In contrast to similar implementations `Ifd.Properties` does not contain any administration data, only pure data properties, e.g. no information about used/linked sub-IFDs. You never work with or see such data, they are all managed internally by **ExifMetaData**.
+
+#### Special sub-IFDs
+The special sub-IFDs are managed via the `ExifIfd`, `GpsIfd`, `InteropIfd` and `SubIfds` properties.
+
+#### Stripe
+The **Stripe** information of a TIFF files is managed via
+ ```
+bool HasStrips()
+void SetStrips(Stream stream, uint[] sourceOffset, uint[] counts)
+bool GetStrips(out Stream stream, out uint[] sourceOffset, out uint[] counts)
+ ```
+#### Tile
+The **Tile** information of a TIFF files is managed via
+ ```
+bool HasTiles()
+bool GetTiles(out Stream stream, out uint[] sourceOffset, out uint[] counts)
+void SetTiles(Stream stream, uint[] sourceOffset, uint[] counts)
+```
+#### Thumbnail
+Thumbnails are managed via
+```
+bool HasThumbnail()
+void GetThumbnail(out Stream sourceStream, out uint sourceOffset, out int count)
+void SetThumbnail(Stream sourceStream, uint sourceOffset, int count)
+```
+
+### Tag ID
+Properties in `Ifd.Properties` are managed by a **tag ID**. A tag ID is a handle that fully describes an exif tag; it combines all information about a tag like the tag number, which IFD the tag belongs to, the type(s) of the tag and more. **TagId.cs** contains all tag IDs.
 
 ### Special IFDs
 An IFD may contain the predefined sub-IFDs **ExifIfd**, **GpsIfd**, **InteropIfd** and **SubIfds**. They play a special role that's why these three IFDs are properties of any standard IFD. There are 2 options of how to set and get tag IDs of these three special IFDs.
@@ -35,7 +68,7 @@ var ifd0 = exifMeta.ImageFileDirectories[0].
 ifd0.SetLensModel("My Lens");
 ```
 
-### Working With Data
+### Working With Single Type Properties
 
 **ExifMetaData** offers 3 different access levels to the metadata.
 
@@ -81,7 +114,7 @@ Orientation orientation = ifd0.GetOrientationProperty(TagId.Orientation);
 ```
 
 #### Level 3
-Level 3 combines all and offers for each tag ID its own get and set method. Refer to **UserExtensions.cs** for all available methods.
+Level 3 combines all and offers for each tag ID its own get and set method. Refer to **UserExtensions.cs** for all available methods (almost 400).
 ```
 ifd0.SetSamplesPerPixel(3);
 ifd0.SetArtist("John Doe");
@@ -92,37 +125,43 @@ string artist = ifd0.GetArtist();
 Orientation orientation = ifd0.GetOrientation();
 ```
 ### Deserialize Binary Metadata
-The following example demonstrates how to deserialize binary exif metadata from a given stream. The position of the stream must be set to the beginning of the exif metadata.
+The following example demonstrates how to deserialize binary exif metadata from a given stream. The position of the stream must be set to the beginning of the exif metadata (the TIFF header).
 ```
 var reader = new ExifBinaryReader();
-reader.ReadIfdWithTiffHeader(stream, true, out ExifMetaData exifMeta, out _);
-
-// use exifMeta
+ExifMetaData exifMeta = reader.Read(stream);
 ```
 
 ### Create Metadata from Scratch
 
-The following example demonstrates how to create EXIF metadata from scratch and convert them to a binary byte array in memory:
+The following example demonstrates how to create EXIF metadata from scratch and serialize them into a byte array:
 
 ```
 ExifMetaData exifMeta = new ExifMetaData();
 IFD ifd0 = new IFD();
 exifMeta.ImageFileDirectories.Add(ifd0);
-// set all your data like:
+// set all your data:
 ifd0.SetArtist("John Doe");
 
 var writer = ExifBinaryWriter(exifMeta);
+byte[] exifBytes = writer.WriteBinary();
+```
+The following example is equivalent to `writer.WriteBinary()` but demonstrates how to serialize into a stream:
+
+```
 byte[] exifBinData;
 
 using (var destStream = new MemoryStream())
 {
-    writer.WriteAllWithTiffHeader(destStream);
+    writer.Write(destStream);
+    // optionally set the byte order
+    writer.ByteOrder = ByteOrder.LittleEndian;
     exifBinData = destStream.ToArray();
 }
+
 ```
 
 ### Build-in File Support
-**ExifMetaData** supports the following file formats:
+The build-in file support is an add-on and sits on top of **ExifMetaData**. The file support API could even be a separate project (I am still considering it). The following file formats are supported:
 
 * TIFF
 * JPG
@@ -137,14 +176,23 @@ You can read metadata from and write metadata to these files. **ExifMetaData** r
 * ICC Profile (binary only)
 
 #### Read Metadata
+One goal was a unified API for all file types that reads the 4 metadata. The following code demonstrates how to read the metadata with automatic file type selection:
 ```
 FileStream sourceStream = File.OpenRead(filename);
 // metaData contains all 4 types, EXIF as decoded ExifMetaData object
-var metaData = ExifDataFile.Load(sourceStream);
+ImageMetaData metaData = ExifDataFile.Load(sourceStream);
+sourceStream.Close();
+```
+The following code demonstrates how to read the metadata from a JPG file:
+```
+FileStream sourceStream = File.OpenRead(filename);
+ImageMetaData metaData = ExifJpg.Load(sourceStream);
 sourceStream.Close();
 ```
 
 #### Write Metadata
+Because of the different nature of the file types, a unified writing API is impossible. `ImageMetaDataWriteOption` is a superset of all settings of all types. It is not the best API but a starting point.
+
 Writing metadata is as simple as reading them. The writer supports:
 * keep the original data
 * overwrite the data with new data
@@ -201,11 +249,12 @@ To add a display converter, implement it, add it to the tag ID in **AllTags.json
 #### Enumerate all Tags
 The test application implements the method `void ShowExifData(ExifMetaData exif)` that enumerates and displays the complete exif metadata tree in a datagrid.
 
-The method `Button_Click_CopyTiff` demonstrates how to copy a tiff file. The tiff isn't copied here using the build-in support. A new **ExifMetaData** object is created and only the needed properties are coped over. It creates a bare metal tiff file from scratch.
+#### Copy TIFF
+The method `Button_Click_CopyTiff` demonstrates how to copy a tiff file. The tiff isn't copied here using the build-in support. A new **ExifMetaData** object is created and only the required TIFF properties are coped over. It creates a bare metal tiff file from scratch.
 
 ### Internals
 #### Code Generator
-The code relies heavyly on automatic code generation to get the huge amount of tag IDs, enums type under control. The heard are the 2 files **AllTags.json** and **AllTypes.json**. **t4** templates could habe been one approach to transform both files into the 6 .cs files. It is still on my radar. But because of the somewhat cryptic t4 files, development (including debugging) of a stand-alone code generator app was way easier.
+The code relies heavyly on automatic code generation to get the huge amount of tag IDs and enum types under control. The heard are the 2 files **AllTags.json** and **AllTypes.json**. **t4** templates could habe been one approach to transform both files into the 6 .cs files. It is still on my radar. But because of the somewhat cryptic t4 files, development (including debugging) of a stand-alone code generator app was way easier.
 
 #### How to Add an Enum
 Some enums are already implemented like **Orientation**. Steps to add an enum:
@@ -216,15 +265,10 @@ Some enums are already implemented like **Orientation**. Steps to add an enum:
 1. Run the code generator.
 
 #### Implementation
-The implementation of **ExifMetaData** differs a little from similar implementations. The basic idea is that the API of an IFD exposes properties you work with. There 3 types of properties:
 
-1. A single type property can hold multiple values but all values have the same type. E.g. **Artist** consists of multiple characters, **LensSpecification** requires of 4 **URationals**. 99.9% are single type properties. These properties are managed in `Ifd.Properties`.
-1. The special sub-IFDs are managed in the **ExifIfd**, **GpsIfd**, **InteropIfd** and **SubIfds** properties.
-1. The **Stripe** or **Tile** information of a TIFF files is managed via `SetStripe`, `GetStripe`, `SetTile`, `GetTile`.
+One design goal was that the developer does not need to care about exif admininstration data. As a result `Ifd.Properties` does not contain (and even cannot store) administration data. The **ExifBinaryWriter** creates a mirror tag tree of all properties and inserts the necessary administration tags into the mirror in the correct order. The mirror then is rendered to binary. `Ifd.Properties` is kept unchanged.
 
-Important to note, `Ifd.Properties` does not contain any information about used/linked sub-IFDs. It contains no administration data. To make that happen the **ExifBinaryWriter** creates a mirror tag tree of **Properties** and inserts all necessary administration tags into the mirror. The mirror then is rendered to binary.
-
-Rendering an exif tree requires a lot of look-ahead information. The mirror tree offers an easy way to get the look-ahead information before rendering the data. The render process is a two pass process. The first pass is a dry run and collects all look-ahead information and stores them in the mirror tree. The second pass renders the tree in one go without changing the stream position and patching some data afterwards.
+Rendering an exif tree requires a lot of look-ahead information. The mirror tree offers an easy way to get the look-ahead information before rendering the data. The render process is a two pass process. The first pass is a dry run. It collects all look-ahead information and adds them to the mirror tree. The second pass renders the tree in one go without changing the stream position and patching some data afterwards.
 
 The mirror tree offers even more features. The EXIF definitions requires an exif version tag in the sub-ExifIFD. In case you do not set the version, **ExifMetaData** does it for you in the mirror tree. The `Properties` are kept untouched.
 

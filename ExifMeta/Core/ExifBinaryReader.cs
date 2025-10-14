@@ -17,7 +17,42 @@ namespace ExifMeta
         {
         }
 
-        public static void ReadTiffHeader(Stream fileStream, out ByteOrder byteOrder, out uint ifdOffset)
+        public ByteOrder ByteOrder => ByteOrder;
+
+        public void ReadIfd(Stream fileStream, uint fileOffset, uint ifdOffset, out ExifMetaData exifMeta, out uint nextOffset)
+        {
+            sourceReader = fileStream;
+            exifFileOffset = fileOffset;
+
+            exifMeta = new ExifMetaData();
+            exifMeta.fileOffset = fileOffset;
+
+            nextOffset = ReadIfd(ifdOffset, out Ifd ifd);
+            exifMeta.ImageFileDirectories.Add(ifd);
+        }
+
+        public ExifMetaData Read(Stream fileStream)
+        {
+            sourceReader = fileStream;
+            exifFileOffset = (uint)fileStream.Position;
+
+            ReadTiffHeader(fileStream, out ByteOrder byteOrder, out uint next);
+
+            this.byteOrder = byteOrder;
+
+            var exifMeta = new ExifMetaData();
+            exifMeta.fileOffset = exifFileOffset;
+
+            while (next != 0)
+            {
+                next = ReadIfd(next, out Ifd ifd);
+                exifMeta.ImageFileDirectories.Add(ifd);
+            }
+
+            return exifMeta;
+        }
+
+        private void ReadTiffHeader(Stream fileStream, out ByteOrder byteOrder, out uint ifdOffset)
         {
             byte[] header = new byte[TiffHeaderConst.TiffHeaderLength];
             int tiffHeaderBytesRead = fileStream.Read(header, 0, TiffHeaderConst.TiffHeaderLength);
@@ -47,6 +82,12 @@ namespace ExifMeta
             {
                 throw new ExifException("Wrong file structure");
             }
+        }
+
+        private uint ReadIfd(uint ifdOffset, out Ifd ifd)
+        {
+            ifd = new Ifd();
+            return ReadSimpleIfd(ifdOffset, ifd);
         }
 
         private void ReadTagData(byte[] ifdBytes, int tagIndex, out DataType dataType, out int valueCount, out byte[] tagData)
@@ -195,12 +236,6 @@ namespace ExifMeta
             }
 
             throw new MissingMethodException("'FromBinary' method not found.");
-        }
-
-        private uint ReadIfd(uint ifdOffset, out Ifd ifd)
-        {
-            ifd = new Ifd();
-            return ReadSimpleIfd(ifdOffset, ifd);
         }
 
         private void ReadSubIfdsIfd(List<List<Ifd>> subIfdsIfd, byte[] ifdBytes, int ifdBytesEntryIndex)
@@ -360,50 +395,6 @@ namespace ExifMeta
             }
 
             return uints;
-        }
-
-        public void ReadIfd(Stream fileStream, uint fileOffset, uint ifdOffset, out ExifMetaData exifMeta, out uint nextOffset)
-        {
-            sourceReader = fileStream;
-            exifFileOffset = fileOffset;
-
-            exifMeta = new ExifMetaData();
-            exifMeta.fileOffset = fileOffset;
-
-            nextOffset = ReadIfd(ifdOffset, out Ifd ifd);
-            exifMeta.ImageFileDirectories.Add(ifd);
-        }
-
-        public void ReadIfdWithTiffHeader(Stream fileStream, bool readFullChain, out ExifMetaData exifMeta, out uint nextOffset)
-        {
-            sourceReader = fileStream;
-            exifFileOffset = (uint)fileStream.Position;
-
-            ReadTiffHeader(fileStream, out ByteOrder byteOrder, out uint next);
-
-            this.byteOrder = byteOrder;
-
-            exifMeta = new ExifMetaData();
-            exifMeta.fileOffset = exifFileOffset;
-
-            if (readFullChain)
-            {
-                while (next != 0)
-                {
-                    next = ReadIfd(next, out Ifd ifd);
-                    exifMeta.ImageFileDirectories.Add(ifd);
-                }
-            }
-            else
-            {
-                if (next != 0)
-                {
-                    next = ReadIfd(next, out Ifd ifd);
-                    exifMeta.ImageFileDirectories.Add(ifd);
-                }
-            }
-
-            nextOffset = next;
         }
 
         private byte[] ReadBytesFromSource(uint fileOffset, int count)

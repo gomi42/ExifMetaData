@@ -69,8 +69,7 @@ namespace ExifMetaFile
                     case ExifChunkId:
                     {
                         var exifReader = new ExifBinaryReader();
-                        exifReader.ReadIfdWithTiffHeader(sourceStream, true, out ExifMetaData exifMetaData, out var _);
-                        imageMetaData.ExifMetaData = exifMetaData;
+                        imageMetaData.ExifMetaData = exifReader.Read(sourceStream);
                         break;
                     }
 
@@ -228,10 +227,10 @@ namespace ExifMetaFile
                 writer.Write(Encoding.ASCII.GetBytes(ExifChunkId));
 
                 var exifWriter = new ExifBinaryWriter(metadata.ExifMetaData);
-                var exifBinaryLen = exifWriter.GetSizeWithTiffHeader();
+                var exifBinaryLen = exifWriter.GetSize();
                 writer.Write((int)exifBinaryLen);
 
-                exifWriter.WriteAllWithTiffHeader(destStream);
+                exifWriter.Write(destStream);
 
                 if ((exifBinaryLen % 2) != 0)
                 {

@@ -33,7 +33,7 @@ namespace ExifMetaFile
             imageMetaData.ImageType = ImageType.Tiff;
 
             var exifReader = new ExifBinaryReader();
-            exifReader.ReadIfdWithTiffHeader(fileStream, false, out ExifMetaData exifMetaData, out _);
+            var exifMetaData = exifReader.Read(fileStream);
             imageMetaData.ExifMetaData = exifMetaData;
 
             imageMetaData.Xmp = GetRawData(exifMetaData, TagId.XmpMetadata);
@@ -75,7 +75,7 @@ namespace ExifMetaFile
         public static void Save(Stream _, Stream destStream, ImageMetaDataWrite metadata)
         {
             var exifWriter = new ExifBinaryWriter(metadata.ExifMetaData);
-            exifWriter.WriteAllWithTiffHeader(destStream);
+            exifWriter.Write(destStream);
         }
     }
 }

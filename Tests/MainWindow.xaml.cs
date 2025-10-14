@@ -142,7 +142,7 @@ namespace Tests
 
             var destStream = File.Create(GetCopyFilename(globalFilename));
             var exifWriter = new ExifBinaryWriter(dstEx);
-            exifWriter.WriteAllWithTiffHeader(destStream);
+            exifWriter.Write(destStream);
 
             sourceStream.Close();
             destStream.Close();
