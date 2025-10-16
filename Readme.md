@@ -254,7 +254,7 @@ The method `Button_Click_CopyTiff` demonstrates how to copy a tiff file. The tif
 
 ### Internals
 #### Code Generator
-The code relies heavyly on automatic code generation to get the huge amount of tag IDs and enum types under control. The heard are the 2 files **AllTags.json** and **AllTypes.json**. **t4** templates could habe been one approach to transform both files into the 6 .cs files. It is still on my radar. But because of the somewhat cryptic t4 files, development (including debugging) of a stand-alone code generator app was way easier.
+The code relies heavyly on automatic code generation to get the huge amount of tag IDs and enum types under control. The heart are the 2 files **AllTags.json** and **AllTypes.json**. **t4** templates could habe been one approach to transform both files into the 6 .cs files. It is still on my radar. But because of the somewhat cryptic t4 files, development (including debugging) of a stand-alone code generator app was way easier.
 
 #### How to Add an Enum
 Some enums are already implemented like **Orientation**. Steps to add an enum:
