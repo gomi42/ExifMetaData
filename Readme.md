@@ -152,9 +152,9 @@ byte[] exifBinData;
 
 using (var destStream = new MemoryStream())
 {
-    writer.Write(destStream);
     // optionally set the byte order
     writer.ByteOrder = ByteOrder.LittleEndian;
+    writer.Write(destStream);
     exifBinData = destStream.ToArray();
 }
 
